@@ -12,7 +12,7 @@ export default function Header() {
     <header className="sticky top-0 z-50 border-b border-cocoa/10 bg-linen/90 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 sm:px-8">
         <Link href="/" className="flex items-center gap-2.5" onClick={() => setOpen(false)}>
-          <ButterflyIcon className="h-7 w-7 text-cocoa" />
+          <ButterflyIcon className="h-9 w-9 text-truffle" bold />
           <span className="font-serif text-lg text-espresso sm:text-xl">
             {SITE.shortName}
           </span>

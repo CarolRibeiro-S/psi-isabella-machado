@@ -1,8 +1,5 @@
 import type { Metadata } from "next";
 import { fraunces, workSans } from "@/app/fonts";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import WhatsAppFloatingButton from "@/components/WhatsAppFloatingButton";
 import { SITE } from "@/lib/site";
 import "./globals.css";
 
@@ -33,10 +30,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className={`${fraunces.variable} ${workSans.variable}`}>
       <body className="flex min-h-screen flex-col bg-linen font-sans text-espresso antialiased">
-        <Header />
-        <div className="flex-1">{children}</div>
-        <Footer />
-        <WhatsAppFloatingButton />
+        {children}
       </body>
     </html>
   );

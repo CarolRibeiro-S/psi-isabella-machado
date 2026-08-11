@@ -2,6 +2,7 @@
 
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
+import { isAdminSessionValid } from "@/lib/auth";
 import {
   createArticle,
   deleteArticle,
@@ -12,6 +13,7 @@ import {
 
 export type ArticleFormState = {
   error?: string;
+  success?: boolean;
 };
 
 function revalidatePublicPages(slug?: string) {
@@ -28,10 +30,11 @@ function readArticleForm(formData: FormData) {
   return { title, content, coverImageUrl: coverImageUrl || null, status };
 }
 
-export async function createArticleAction(
-  _prevState: ArticleFormState,
-  formData: FormData
-): Promise<ArticleFormState> {
+export async function createArticleAction(formData: FormData): Promise<ArticleFormState> {
+  if (!(await isAdminSessionValid())) {
+    return { error: "Sessão expirada. Faça login novamente." };
+  }
+
   const { title, content, coverImageUrl, status } = readArticleForm(formData);
 
   if (!title || !content) {
@@ -46,14 +49,14 @@ export async function createArticleAction(
   });
 
   revalidatePublicPages(article.slug);
-  redirect("/admin");
+  return { success: true };
 }
 
-export async function updateArticleAction(
-  id: number,
-  _prevState: ArticleFormState,
-  formData: FormData
-): Promise<ArticleFormState> {
+export async function updateArticleAction(id: number, formData: FormData): Promise<ArticleFormState> {
+  if (!(await isAdminSessionValid())) {
+    return { error: "Sessão expirada. Faça login novamente." };
+  }
+
   const { title, content, coverImageUrl, status } = readArticleForm(formData);
 
   if (!title || !content) {
@@ -72,18 +75,26 @@ export async function updateArticleAction(
 
   revalidatePublicPages(article.slug);
   if (existing.slug !== article.slug) revalidatePublicPages(existing.slug);
-  redirect("/admin");
+  return { success: true };
 }
 
 export async function deleteArticleAction(id: number): Promise<void> {
+  if (!(await isAdminSessionValid())) {
+    redirect("/admin/login");
+  }
+
   const existing = await getArticleById(id);
   await deleteArticle(id);
   revalidatePublicPages(existing?.slug);
-  redirect("/admin");
+  revalidatePath("/admin");
 }
 
 export async function togglePublishAction(id: number, publish: boolean): Promise<void> {
+  if (!(await isAdminSessionValid())) {
+    redirect("/admin/login");
+  }
+
   const article = await setArticlePublishState(id, publish);
   revalidatePublicPages(article.slug);
-  redirect("/admin");
+  revalidatePath("/admin");
 }

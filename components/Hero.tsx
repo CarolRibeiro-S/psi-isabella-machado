@@ -4,11 +4,11 @@ import { SITE, whatsappLink } from "@/lib/site";
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden bg-soft-radial">
+    <section id="hero" className="relative overflow-hidden bg-soft-radial">
       <ButterflyIcon className="pointer-events-none absolute -right-10 top-16 h-56 w-56 text-cocoa/10 sm:h-72 sm:w-72" />
       <ButterflyIcon className="pointer-events-none absolute -left-14 bottom-0 hidden h-64 w-64 -scale-x-100 text-camel/10 sm:block" />
 
-      <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 py-16 sm:px-8 sm:py-24 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
+      <div className="mx-auto grid max-w-6xl items-start gap-8 px-5 py-10 sm:px-8 sm:py-16 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16 lg:py-20">
         <div className="order-2 lg:order-1">
           <span className="section-eyebrow inline-flex items-center gap-2">
             <ButterflyIcon className="h-4 w-4" />
@@ -27,24 +27,25 @@ export default function Hero() {
             você.
           </p>
 
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+          <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4">
             <a href={whatsappLink()} target="_blank" rel="noopener noreferrer" className="btn-primary">
-              Conversar no WhatsApp
+              Agendar conversa
             </a>
-            <a href="#sobre" className="btn-secondary">
+            <a href="#sobre" className="text-link">
               Conhecer meu trabalho
+              <span aria-hidden="true">→</span>
             </a>
           </div>
         </div>
 
         <div className="order-1 lg:order-2">
-          <div className="relative mx-auto aspect-[4/5] w-full max-w-sm overflow-hidden rounded-[2.5rem] border border-cocoa/15 shadow-soft">
+          <div className="relative mx-auto aspect-[4/5] w-full max-w-[240px] overflow-hidden rounded-[2rem] border border-cocoa/15 shadow-soft sm:max-w-sm sm:rounded-[2.5rem]">
             <Image
               src="/images/foto_isabella.jpeg"
               alt={`${SITE.name}, ${SITE.role}`}
               fill
               priority
-              className="object-cover"
+              className="object-cover object-[50%_15%]"
               sizes="(max-width: 1024px) 80vw, 420px"
             />
           </div>

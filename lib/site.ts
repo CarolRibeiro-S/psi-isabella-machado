@@ -1,6 +1,7 @@
 export const SITE = {
   name: "Isabella Cristina Ribeiro Machado",
   shortName: "Isabella Machado",
+  authorName: "Psi Isa Machado",
   crp: "CRP 01/26547",
   role: "Psicóloga Clínica",
   whatsappNumber: "5561996737949",

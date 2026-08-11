@@ -36,5 +36,15 @@ export function formatDatePtBR(date: string | Date): string {
     day: "2-digit",
     month: "long",
     year: "numeric",
+    timeZone: "America/Sao_Paulo",
+  }).format(d);
+}
+
+export function formatTimePtBR(date: string | Date): string {
+  const d = typeof date === "string" ? new Date(date) : date;
+  return new Intl.DateTimeFormat("pt-BR", {
+    hour: "2-digit",
+    minute: "2-digit",
+    timeZone: "America/Sao_Paulo",
   }).format(d);
 }

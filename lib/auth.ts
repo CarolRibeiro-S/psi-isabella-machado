@@ -1,3 +1,4 @@
+import { cookies } from "next/headers";
 import { SignJWT, jwtVerify } from "jose";
 
 export const SESSION_COOKIE_NAME = "isabella_admin_session";
@@ -32,3 +33,19 @@ export async function verifySessionToken(token: string): Promise<boolean> {
 }
 
 export const SESSION_MAX_AGE = SESSION_DURATION_SECONDS;
+
+/**
+ * Checa a sessão via cookies() (Server Components/Actions), em vez de
+ * middleware. O Next.js 14 tem um bug conhecido de interação entre
+ * middleware e Server Actions: quando uma Server Action é chamada a partir
+ * de uma rota protegida por middleware, a resposta da action pode vir com
+ * x-action-redirect apontando para o destino de "não autenticado" do
+ * middleware, mesmo com um cookie de sessão válido presente na requisição.
+ * Checar a sessão diretamente com cookies() dentro do layout e de cada
+ * action evita esse problema.
+ */
+export async function isAdminSessionValid(): Promise<boolean> {
+  const cookieStore = await cookies();
+  const token = cookieStore.get(SESSION_COOKIE_NAME)?.value;
+  return token ? verifySessionToken(token) : false;
+}

@@ -1,25 +1,24 @@
 "use client";
 
-import { useTransition } from "react";
 import { deleteArticleAction } from "@/app/admin/articles/actions";
+import RefreshOnComplete from "@/components/admin/RefreshOnComplete";
 
 export default function DeleteArticleButton({ id, title }: { id: number; title: string }) {
-  const [isPending, startTransition] = useTransition();
+  const boundAction = deleteArticleAction.bind(null, id);
 
   return (
-    <button
-      type="button"
-      disabled={isPending}
-      onClick={() => {
-        if (confirm(`Excluir o artigo "${title}"? Essa ação não pode ser desfeita.`)) {
-          startTransition(() => {
-            deleteArticleAction(id);
-          });
+    <form
+      action={boundAction}
+      onSubmit={(event) => {
+        if (!confirm(`Excluir o artigo "${title}"? Essa ação não pode ser desfeita.`)) {
+          event.preventDefault();
         }
       }}
-      className="font-sans text-sm text-red-700 hover:text-red-900 disabled:opacity-50"
     >
-      Excluir
-    </button>
+      <RefreshOnComplete />
+      <button type="submit" className="font-sans text-sm text-red-700 hover:text-red-900">
+        Excluir
+      </button>
+    </form>
   );
 }

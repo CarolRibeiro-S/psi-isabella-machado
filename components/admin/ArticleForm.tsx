@@ -2,8 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { useFormState, useFormStatus } from "react-dom";
-import type { ArticleFormState } from "@/app/admin/articles/actions";
+import { useFormStatus } from "react-dom";
 
 type InitialValues = {
   title: string;
@@ -13,9 +12,10 @@ type InitialValues = {
 };
 
 type ArticleFormProps = {
-  action: (prevState: ArticleFormState, formData: FormData) => Promise<ArticleFormState>;
+  action: (formData: FormData) => Promise<void>;
   submitLabel: string;
   initialValues?: InitialValues;
+  initialError?: string;
 };
 
 const EMPTY_VALUES: InitialValues = {
@@ -34,9 +34,8 @@ function SubmitButton({ label }: { label: string }) {
   );
 }
 
-export default function ArticleForm({ action, submitLabel, initialValues }: ArticleFormProps) {
+export default function ArticleForm({ action, submitLabel, initialValues, initialError }: ArticleFormProps) {
   const values = initialValues ?? EMPTY_VALUES;
-  const [state, formAction] = useFormState(action, {} as ArticleFormState);
   const [coverImageUrl, setCoverImageUrl] = useState(values.coverImageUrl ?? "");
   const [uploading, setUploading] = useState(false);
   const [uploadError, setUploadError] = useState<string | null>(null);
@@ -69,7 +68,7 @@ export default function ArticleForm({ action, submitLabel, initialValues }: Arti
   }
 
   return (
-    <form action={formAction} className="flex flex-col gap-6">
+    <form action={action} className="flex flex-col gap-6">
       <div className="flex flex-col gap-1.5">
         <label htmlFor="title" className="font-sans text-sm text-truffle">
           Título
@@ -166,9 +165,9 @@ export default function ArticleForm({ action, submitLabel, initialValues }: Arti
         </select>
       </div>
 
-      {state.error && (
+      {initialError && (
         <p role="alert" className="font-sans text-sm text-red-700">
-          {state.error}
+          {initialError}
         </p>
       )}
 

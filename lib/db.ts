@@ -6,4 +6,10 @@ if (!process.env.DATABASE_URL) {
   );
 }
 
-export const sql = neon(process.env.DATABASE_URL);
+// O driver HTTP do Neon usa fetch() por baixo dos panos. Sem isso, o Next.js
+// intercepta esse fetch e guarda a resposta no Data Cache, então uma página
+// pode continuar mostrando dados antigos do banco mesmo depois de um INSERT/
+// UPDATE/DELETE, mesmo em rotas marcadas como force-dynamic.
+export const sql = neon(process.env.DATABASE_URL, {
+  fetchOptions: { cache: "no-store" },
+});

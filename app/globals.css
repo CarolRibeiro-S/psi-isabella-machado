@@ -37,6 +37,10 @@ body {
     @apply inline-flex items-center justify-center gap-2 rounded-full border border-cocoa/40 bg-transparent px-6 py-3 font-sans text-sm font-medium text-cocoa transition-colors hover:bg-cocoa/10;
   }
 
+  .text-link {
+    @apply inline-flex items-center gap-1.5 font-sans text-sm font-medium text-cocoa underline decoration-cocoa/40 underline-offset-4 transition-colors hover:text-espresso hover:decoration-espresso;
+  }
+
   .prose-article {
     @apply font-sans text-base sm:text-lg leading-relaxed text-truffle;
   }

@@ -1,5 +1,5 @@
 import ButterflyIcon from "@/components/ButterflyIcon";
-import { SITE, whatsappLink } from "@/lib/site";
+import { SITE } from "@/lib/site";
 
 const EDUCATION = [
   {
@@ -14,42 +14,35 @@ const EDUCATION = [
 
 export default function About() {
   return (
-    <section id="sobre" className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
-      <div className="grid gap-14 lg:grid-cols-[1fr_1fr] lg:gap-20">
+    <section id="sobre" className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-24">
+      <div className="grid gap-14 lg:grid-cols-[1fr_1fr] lg:items-start lg:gap-20">
         <div>
           <span className="section-eyebrow">Sobre mim</span>
           <h2 className="section-heading mt-3">Seja muito bem-vinda(o)</h2>
 
           <div className="prose-article mt-6">
             <p>
-              Me chamo Isabella, sou psicóloga atuando na área clínica há 3
-              anos, graduada pela Faculdade Anhanguera de Brasília e
-              pós-graduada em Terapia Cognitivo-Comportamental pela Facuminas.
+              Você já teve a sensação de carregar tudo sozinha(o), mesmo
+              cercada(o) de gente?
             </p>
             <p>
-              Se busca acolhimento, clareza e apoio para lidar com a
-              ansiedade, emoções, relacionamentos ou tantos outros desafios do
-              dia a dia, saiba que não precisa percorrer esse caminho
-              sozinha(o).
+              Eu sou Isabella, psicóloga clínica há 3 anos, formada pela
+              Faculdade Anhanguera de Brasília e pós-graduada em Terapia
+              Cognitivo-Comportamental pela Facuminas.
             </p>
             <p>
-              Aqui você encontra um espaço seguro, com respeito, sigilo e
-              dedicação total a você.
+              No meu trabalho, acredito que ninguém deveria precisar
+              atravessar a ansiedade, os relacionamentos difíceis ou os
+              desafios do dia a dia sem um espaço para se ouvir de verdade.
             </p>
-          </div>
-
-          <div className="mt-8">
-            <p className="font-serif text-3xl font-medium text-cocoa sm:text-4xl">
-              Vamos conversar?
+            <p>
+              É esse espaço que eu construo em cada sessão, com escuta
+              atenta, sigilo absoluto e total dedicação a você.
             </p>
-            <a
-              href={whatsappLink()}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-primary mt-5"
-            >
-              Agendar conversa
-            </a>
+            <p>
+              Se você chegou até aqui buscando esse acolhimento, talvez seja
+              o momento certo.
+            </p>
           </div>
         </div>
 

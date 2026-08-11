@@ -1,4 +1,5 @@
 import ButterflyIcon from "@/components/ButterflyIcon";
+import ParallaxButterfly from "@/components/ParallaxButterfly";
 import { SITE } from "@/lib/site";
 
 const EDUCATION = [
@@ -14,8 +15,12 @@ const EDUCATION = [
 
 export default function About() {
   return (
-    <section id="sobre" className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-24">
-      <div className="grid gap-14 lg:grid-cols-[1fr_1fr] lg:items-start lg:gap-20">
+    <section id="sobre" className="relative mx-auto max-w-6xl overflow-hidden px-5 py-16 sm:px-8 sm:py-24">
+      <ParallaxButterfly
+        className="pointer-events-none absolute -right-16 top-1/3 hidden h-64 w-64 -scale-x-100 text-camel/[0.16] sm:block"
+        speed={0.18}
+      />
+      <div className="relative grid gap-14 lg:grid-cols-[1fr_1fr] lg:items-start lg:gap-20">
         <div>
           <span className="section-eyebrow">Sobre mim</span>
           <h2 className="section-heading mt-3">Seja muito bem-vinda(o)</h2>

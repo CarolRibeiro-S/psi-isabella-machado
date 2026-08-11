@@ -1,14 +1,21 @@
 import Image from "next/image";
 import ButterflyIcon from "@/components/ButterflyIcon";
+import ParallaxButterfly from "@/components/ParallaxButterfly";
 import { SITE, whatsappLink } from "@/lib/site";
 
 export default function Hero() {
   return (
     <section id="hero" className="relative overflow-hidden bg-soft-radial">
-      <ButterflyIcon className="pointer-events-none absolute -right-10 top-16 h-56 w-56 text-cocoa/10 sm:h-72 sm:w-72" />
-      <ButterflyIcon className="pointer-events-none absolute -left-14 bottom-0 hidden h-64 w-64 -scale-x-100 text-camel/10 sm:block" />
+      <ParallaxButterfly
+        className="pointer-events-none absolute -right-10 top-16 h-56 w-56 text-cocoa/[0.16] sm:h-72 sm:w-72"
+        speed={0.12}
+      />
+      <ParallaxButterfly
+        className="pointer-events-none absolute -left-14 bottom-0 hidden h-64 w-64 -scale-x-100 text-camel/[0.18] sm:block"
+        speed={0.2}
+      />
 
-      <div className="mx-auto grid max-w-6xl items-start gap-8 px-5 py-10 sm:px-8 sm:py-16 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16 lg:py-20">
+      <div className="relative mx-auto grid max-w-6xl items-start gap-8 px-5 py-10 sm:px-8 sm:py-16 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16 lg:py-20">
         <div className="order-2 lg:order-1">
           <span className="section-eyebrow inline-flex items-center gap-2">
             <ButterflyIcon className="h-4 w-4" />

@@ -48,4 +48,22 @@ body {
   .prose-article p {
     @apply mb-5;
   }
+
+  .butterfly-mask {
+    display: inline-block;
+    background-color: currentColor;
+    -webkit-mask-image: url(/icons/borboleta.svg);
+    mask-image: url(/icons/borboleta.svg);
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+  }
+
+  .butterfly-mask-bold {
+    filter: drop-shadow(0.5px 0 0 currentColor) drop-shadow(-0.5px 0 0 currentColor)
+      drop-shadow(0 0.5px 0 currentColor) drop-shadow(0 -0.5px 0 currentColor);
+  }
 }

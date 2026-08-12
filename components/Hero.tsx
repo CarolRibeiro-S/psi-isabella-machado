@@ -7,11 +7,11 @@ export default function Hero() {
   return (
     <section id="hero" className="relative overflow-hidden bg-soft-radial">
       <ParallaxButterfly
-        className="pointer-events-none absolute -right-10 top-16 h-56 w-56 text-cocoa/[0.16] sm:h-72 sm:w-72"
+        className="pointer-events-none absolute -right-10 top-16 h-56 w-56 text-cocoa/[0.35] sm:h-72 sm:w-72"
         speed={0.12}
       />
       <ParallaxButterfly
-        className="pointer-events-none absolute -left-14 bottom-0 hidden h-64 w-64 -scale-x-100 text-camel/[0.18] sm:block"
+        className="pointer-events-none absolute -left-14 bottom-0 hidden h-64 w-64 -scale-x-100 text-camel/[0.36] sm:block"
         speed={0.2}
       />
 

@@ -10,7 +10,7 @@ export default async function ArticlesPreview() {
   return (
     <section id="artigos" className="relative mx-auto max-w-6xl overflow-hidden px-5 py-16 sm:px-8 sm:py-24">
       <ParallaxButterfly
-        className="pointer-events-none absolute -right-14 top-8 hidden h-60 w-60 text-camel/[0.16] sm:block"
+        className="pointer-events-none absolute -right-14 top-8 hidden h-60 w-60 text-camel/[0.34] sm:block"
         speed={0.14}
       />
       <div className="relative flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">

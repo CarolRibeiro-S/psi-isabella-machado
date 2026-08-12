@@ -35,7 +35,7 @@ export default function Services() {
   return (
     <section id="areas-de-atuacao" className="relative overflow-hidden bg-porcelain">
       <ParallaxButterfly
-        className="pointer-events-none absolute -left-12 bottom-6 hidden h-56 w-56 text-cocoa/[0.14] sm:block"
+        className="pointer-events-none absolute -left-12 bottom-6 hidden h-56 w-56 text-cocoa/[0.32] sm:block"
         speed={0.16}
       />
       <div className="relative mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-24">

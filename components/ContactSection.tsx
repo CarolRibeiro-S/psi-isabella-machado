@@ -6,11 +6,11 @@ export default function ContactSection() {
     <section className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-24">
       <div className="relative overflow-hidden rounded-[2.5rem] bg-cocoa px-6 py-16 text-center sm:px-16">
         <ParallaxButterfly
-          className="pointer-events-none absolute -left-8 -top-8 h-40 w-40 text-linen/20"
+          className="pointer-events-none absolute -left-8 -top-8 h-40 w-40 text-linen/40"
           speed={0.15}
         />
         <ParallaxButterfly
-          className="pointer-events-none absolute -bottom-10 -right-6 h-48 w-48 -scale-x-100 text-linen/20"
+          className="pointer-events-none absolute -bottom-10 -right-6 h-48 w-48 -scale-x-100 text-linen/40"
           speed={0.22}
         />
 
